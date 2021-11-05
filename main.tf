@@ -50,7 +50,7 @@ resource "azurerm_app_service" "sales_module" {
    connection_string {
     name  = "Database"
     type  = "SQLServer"
-    value = "Server=tcp:${var.name}-database-server1.database.windows.net;Initial Catalog=dev-database;Persist Security Info=False;User ID=${var.sql_server_login.username};Password=${var.sql_server_login.password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;"
+    value = "Server=tcp:${var.name}-database-server1.database.windows.net;Initial Catalog=${azurerm_sql_database.database.name};Persist Security Info=False;User ID=${var.sql_server_login.username};Password=${var.sql_server_login.password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;"
   }
 }
 
@@ -64,7 +64,7 @@ resource "azurerm_app_service" "identity" {
   connection_string {
     name  = "Database"
     type  = "SQLServer"
-    value = "Server=tcp:${var.name}-database-server1.database.windows.net;Initial Catalog=dev-database;Persist Security Info=False;User ID=${var.sql_server_login.username};Password=${var.sql_server_login.password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;"
+    value = "Server=tcp:${var.name}-database-server1.database.windows.net;Initial Catalog=${azurerm_sql_database.database.name};Persist Security Info=False;User ID=${var.sql_server_login.username};Password=${var.sql_server_login.password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;"
   }
 }
 
