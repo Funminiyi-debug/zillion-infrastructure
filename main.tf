@@ -106,3 +106,19 @@ resource "azurerm_sql_database" "database" {
   }
 }
 
+resource "azurerm_sql_database" "database2" {
+  name                = "test-database"
+  resource_group_name = data.azurerm_resource_group.backend_app_rg.name
+  location            = data.azurerm_resource_group.backend_app_rg.location
+  server_name         = azurerm_sql_server.sql_server.name
+  # environment         = "production"
+  edition             = "Basic"
+  max_size_bytes      = "2147483648"
+  requested_service_objective_id = "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c"
+  requested_service_objective_name = "Basic"
+
+   tags = {
+    environment = "${var.environment}"
+  }
+}
+
